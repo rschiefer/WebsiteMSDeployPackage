@@ -3,26 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "..\..\WebSites\WebSite1\", "{9EF124A3-D9CC-42E5-8060-D2746D99BB38}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "WebSite1\", "{9EF124A3-D9CC-42E5-8060-D2746D99BB38}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_4345"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\WebSites\WebSite1\"
+		Debug.AspNetCompiler.PhysicalPath = "WebSite1\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4345\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_4345"
-		Release.AspNetCompiler.PhysicalPath = "..\..\WebSites\WebSite1\"
+		Release.AspNetCompiler.PhysicalPath = "WebSite1\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_4345\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "4345"
-		SlnRelativePath = "..\..\WebSites\WebSite1\"
+		SlnRelativePath = "WebSite1\"
 		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{CEFFE34D-B1F1-47CB-AC3E-3EEB49438A9E}"
+	ProjectSection(SolutionItems) = preProject
+		deployment\createPackage.bat = deployment\createPackage.bat
+		deployment\deployPackage.bat = deployment\deployPackage.bat
+		deployment\manifest.dest.xml = deployment\manifest.dest.xml
+		deployment\manifest.source.xml = deployment\manifest.source.xml
 	EndProjectSection
 EndProject
 Global
