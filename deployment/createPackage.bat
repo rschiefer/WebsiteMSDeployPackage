@@ -1,0 +1,1 @@
+"c:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync -source:manifest="manifest.source.xml" -dest:package=websitepackage.zip

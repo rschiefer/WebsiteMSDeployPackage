@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <!--TODO: Update to your desired application name.-->
+  <contentPath path="Default Web Site/CustomPkgWebsite2" />
+  <createApp path="Default Web Site/CustomPkgWebsite2" />
+</sitemanifest>
