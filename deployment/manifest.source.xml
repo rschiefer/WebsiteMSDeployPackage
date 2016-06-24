@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <sitemanifest>
   <!--TODO: Update to your custom website location-->
-  <contentPath path="C:\Users\rschi\Documents\Visual Studio 2015\WebSites\WebSite1" />
+  <contentPath path="C:\temp\WebsiteMSDeployPackage\WebSite1" />
   <createApp path="" />
 </sitemanifest>
