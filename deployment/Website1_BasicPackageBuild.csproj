@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="PackageWebsite" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="PackageWebsite">
+    <RemoveDir Directories="package" />
+    <MakeDir Directories="package" />    
+    <Exec Command="createPackage.bat"  />    
+  </Target>
+</Project>

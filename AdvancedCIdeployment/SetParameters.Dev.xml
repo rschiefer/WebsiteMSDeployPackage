@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters>
+  <setParameter name="AppSetting-Key1" value="DevValue" />
+  <setParameter name="EnvironmentName" value="DEV" />
+  <setParameter name="IIS Web Application Name" value="dev.website1.com" />
+</parameters>

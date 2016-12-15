@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="AppSetting-Key1" description="This is a sample parameterization for an AppSetting." defaultValue="defaultParameterizationValue">
+    <parameterEntry kind="XmlFile" scope="\\web\.config" match="//add[@key='Key1']/@value" />
+  </parameter>
+  <parameter name="EnvironmentName" defaultValue="DEFAULT">
+    <parameterEntry kind="TextFile" scope="\\default\.aspx" match="ENVIRONMENT" />
+  </parameter>
+  <parameter name="IIS Web Application Name" defaultValue="default.website1.com" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp|contentPath|createApp" match=".*" />
+  </parameter>
+</parameters>

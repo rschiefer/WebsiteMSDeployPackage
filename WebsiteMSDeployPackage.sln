@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite1(1)", "WebSite1\", "{9EF124A3-D9CC-42E5-8060-D2746D99BB38}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -28,9 +28,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deployment", "deployment", "{CEFFE34D-B1F1-47CB-AC3E-3EEB49438A9E}"
 	ProjectSection(SolutionItems) = preProject
 		deployment\createPackage.bat = deployment\createPackage.bat
+		deploy.cmd = deploy.cmd
 		deployment\deployPackage.bat = deployment\deployPackage.bat
 		deployment\manifest.dest.xml = deployment\manifest.dest.xml
 		deployment\manifest.source.xml = deployment\manifest.source.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CIdeployment", "CIdeployment", "{F368C66A-1D19-49AE-8F67-176BAAC1E324}"
+	ProjectSection(SolutionItems) = preProject
+		AdvancedCIdeployment\deploy.cmd = AdvancedCIdeployment\deploy.cmd
+		AdvancedCIdeployment\parameters.xml = AdvancedCIdeployment\parameters.xml
+		AdvancedCIdeployment\SetParameters.Dev.xml = AdvancedCIdeployment\SetParameters.Dev.xml
+		AdvancedCIdeployment\SetParameters.Test.xml = AdvancedCIdeployment\SetParameters.Test.xml
 	EndProjectSection
 EndProject
 Global

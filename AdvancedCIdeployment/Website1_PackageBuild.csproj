@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="PackageWebsite" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreCompileWebsite Condition="'$(PreCompileWebsite)'==''">True</PreCompileWebsite>
+    <!-- Get website name from project name. -->
+    <WebsiteName>$([System.Text.RegularExpressions.Regex]::Match($(MSBuildProjectName), `^.*?(?=_PackageBuild)`))</WebsiteName>
+    <!-- Get website path.  Assume the deployment folder is a sibling of the website folder. -->
+    <WebsitePath Condition="'$(WebsitePath)'==''">$([System.IO.Path]::GetDirectoryName($(MSBuildProjectDirectory)))\$(WebsiteName)</WebsitePath>
+    <PrecompiledWebsitePath Condition="'$(PrecompiledWebsitePath)'==''">$(WebsitePath)_PreCompiled\</PrecompiledWebsitePath>
+    
+    <AspNetCompilerPath Condition="'$(AspNetCompilerPath)'==''">C:\Windows\Microsoft.NET\Framework\v4.0.30319\aspnet_compiler</AspNetCompilerPath>
+    <MSDeployExePath Condition="'$(MSDeployExePath)'==''">c:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe</MSDeployExePath>
+  </PropertyGroup>
+  <Target Name="PackageWebsite">
+    <Message Text="Website name = $(WebsiteName)" />
+
+    <RemoveDir Directories="$(PrecompiledWebsitePath)" />
+    <MakeDir Directories="$(PrecompiledWebsitePath)" />
+    <Exec Condition="'$(PreCompileWebsite)'=='True'" Command="&quot;$(AspNetCompilerPath)&quot; -p &quot;$(WebsitePath)&quot; -v / $(PrecompiledWebsitePath)" />
+    <PropertyGroup>
+      <WebsitePath  Condition="'$(PreCompileWebsite)'=='True'">$(PrecompiledWebsitePath)</WebsitePath>
+    </PropertyGroup>
+    
+    <RemoveDir Directories="package" />
+    <MakeDir Directories="package" />    
+    <Exec Command="&quot;$(MSDeployExePath)&quot; -verb:sync -source:iisApp=&quot;$(WebsitePath)&quot; -dest:package=&quot;package\$(WebsiteName).zip&quot; -declareParamFile:&quot;parameters.xml&quot; -verbose"  />
+
+    <ItemGroup>
+      <paramFiles Include="setParam*.xml" />
+    </ItemGroup>
+    <Copy SourceFiles="@(paramFiles)" DestinationFolder="package" />
+
+    <PropertyGroup>
+      <DeployCommandPath>package\$(WebsiteName).deploy.cmd</DeployCommandPath>
+    </PropertyGroup>
+    <Copy SourceFiles="deploy.cmd" DestinationFiles="$(DeployCommandPath)" />
+    <TokenReplace Path="$(DeployCommandPath)" Token="[WEBSITE_NAME]" Replacement="$(WebsiteName)" />
+  </Target>
+  
+  <UsingTask TaskName="TokenReplace" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll">
+    <ParameterGroup>
+      <Path ParameterType="System.String" Required="true" />
+      <Token ParameterType="System.String" Required="true" />
+      <Replacement ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[  
+string content = File.ReadAllText(Path);  
+content = content.Replace(Token, Replacement);  
+File.WriteAllText(Path, content);  
+  
+]]>
+      </Code>
+    </Task>
+  </UsingTask>
+</Project>
